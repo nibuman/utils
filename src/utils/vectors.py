@@ -8,10 +8,10 @@ class Vector:
     col: int
 
     def __add__(self, other):
-        return Point(self.row + other.row, self.col + other.col)
+        return Vector(self.row + other.row, self.col + other.col)
 
     def __sub__(self, other):
-        return Point(self.row - other.row, self.col - other.col)
+        return Vector(self.row - other.row, self.col - other.col)
 
     def __iter__(self):
         yield self.row
