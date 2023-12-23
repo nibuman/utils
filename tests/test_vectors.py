@@ -35,15 +35,16 @@ def test_Vector_sets():
     vec_set.add(V(1, 2))
     vec_set.add(V(0, 1))
     vec_set.add(V(2, 1))
-    assert len(vec_set) == 4
+    vec_set.add(V(0.2, 1.4))
+    assert len(vec_set) == 5
 
     # Length shouldn't change when a duplicate is added
     vec_set.add(V(2, 1))
-    assert len(vec_set) == 4
+    assert len(vec_set) == 5
 
 
 def test_Vector_dict_key():
-    vec_map = {V(1, 0): "a", V(2, 1): "b", V(1, 2): "c"}
+    vec_map = {V(1.2323, -0.99934): "a", V(2, 1): "b", V(1, 2): "c"}
     assert vec_map[V(2, 1)] == "b"
     vec_map[V(2, 1)] = "d"
     assert vec_map[V(2, 1)] == "d"
