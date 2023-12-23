@@ -4,14 +4,25 @@ from utils.vectors import Vector as V
 
 
 @pytest.mark.parametrize(
-    ["vec1", "vec2", "vec3"],
+    ["vec1", "vec2", "expected_answer"],
     [
         [(0, 0), (1, 2), (1, 2)],
         [(-10, -10), (2, 2), (-8, -8)],
     ],
 )
-def test_Vector_add(vec1, vec2, vec3):
-    assert V(*vec1) + V(*vec2) == V(*vec3)
+def test_Vector_add(vec1, vec2, expected_answer):
+    assert V(*vec1) + V(*vec2) == V(*expected_answer)
+
+
+@pytest.mark.parametrize(
+    ["vec1", "vec2", "expected_answer"],
+    [
+        [(0, 0), (1, 2), (-1, -2)],
+        [(-10, -10), (2, 2), (-12, -12)],
+    ],
+)
+def test_Vector_sub(vec1, vec2, expected_answer):
+    assert V(*vec1) - V(*vec2) == V(*expected_answer)
 
 
 def test_Vector_add_float():

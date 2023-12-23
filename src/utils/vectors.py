@@ -21,7 +21,7 @@ class Vector:
         return hash((self.row, self.col))
 
     def __eq__(self, other):
-        return (self.row == other.row) and (self.col) == (other.col)
+        return (self.row == other.row) and (self.col == other.col)
 
 
 def manhattan(
