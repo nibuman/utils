@@ -4,8 +4,8 @@ from typing import Iterable
 
 @dataclass
 class Vector:
-    row: int
-    col: int
+    row: int | float
+    col: int | float
 
     def __add__(self, other):
         return Vector(self.row + other.row, self.col + other.col)
