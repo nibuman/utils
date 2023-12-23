@@ -27,6 +27,8 @@ class Vector:
 def manhattan(
     vector1: Iterable[int | float], vector2: Iterable[int | float]
 ) -> int | float:
+    """Computes the Manhattan distance between 2 vectors (the sum of the absolute differences of
+    their respective Cartesian coordinates)"""
     r1, c1 = vector1
     r2, c2 = vector2
     return abs(r1 - r2) + abs(c1 - c2)
