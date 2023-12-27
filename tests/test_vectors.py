@@ -77,3 +77,15 @@ def test_manhattan(vec1, vec2, distance):
 
     # Check with Vector arguments
     assert utils.vectors.manhattan(V(*vec1), V(*vec2)) == distance
+
+
+def test_shoelace():
+    coordinates = [V(1, 6), V(3, 1), V(7, 2), V(4, 4), V(8, 5)]
+    expected_answer = 16.5
+
+    # Test with Vectors
+    assert utils.vectors.shoelace(coordinates) == pytest.approx(expected_answer)
+
+    # Test with tuples
+    tuple_coords = [tuple(v) for v in coordinates]
+    assert utils.vectors.shoelace(tuple_coords) == pytest.approx(expected_answer)
