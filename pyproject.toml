@@ -1,0 +1,16 @@
+[project]
+name = "utils"
+version = "0.1.0"
+description = "Library of utility functions to use in other projects"
+readme = "README.md"
+authors = [
+    { name = "Nick Bushby", email = "nick.bushby5@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.2.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
