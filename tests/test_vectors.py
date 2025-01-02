@@ -86,6 +86,9 @@ def test_shoelace():
     # Test with Vectors
     assert utils.vectors.shoelace(coordinates) == pytest.approx(expected_answer)
 
+    # Test reverse direction
+    assert utils.vectors.shoelace(coordinates[::-1]) == pytest.approx(expected_answer)
+
     # Test with tuples
     tuple_coords = [tuple(v) for v in coordinates]
     assert utils.vectors.shoelace(tuple_coords) == pytest.approx(expected_answer)

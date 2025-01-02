@@ -46,7 +46,7 @@ def shoelace(coordinates: Iterable[vector_type]) -> int | float:
     """The shoelace formula, also known as Gauss's area formula and the surveyor's formula, is a
     mathematical algorithm to determine the area of a simple polygon whose vertices are described by
     their Cartesian coordinates in the plane"""
-    return (
+    return abs(
         sum(
             np.linalg.det([[*p1], [*p2]])
             for p1, p2 in zip(coordinates, coordinates[1:] + [coordinates[0]])
