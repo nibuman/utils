@@ -1,9 +1,21 @@
 from dataclasses import dataclass
-from typing import Iterable
+from typing import Generator, Iterable, Iterator, Protocol, TypeVar, overload
 import numpy as np
 
-vector_type = Iterable[list | float]
+vector_type = Iterable[int | float]
 """test"""
+
+T = TypeVar("T")
+
+
+class AddableSequence(Protocol[T]):
+    def __add__(self, other: "AddableSequence[T]") -> "AddableSequence[T]": ...
+    def __iter__(self) -> Iterator[T]: ...
+    def __len__(self) -> int: ...
+    @overload
+    def __getitem__(self, index: int) -> T: ...
+    @overload
+    def __getitem__(self, index: slice) -> "AddableSequence[T]": ...
 
 
 @dataclass
@@ -23,7 +35,7 @@ class Vector:
     def __rmul__(self, other: int | float):
         return self.__mul__(other)
 
-    def __iter__(self):
+    def __iter__(self) -> Generator[int | float, None, None]:
         yield self.row
         yield self.col
 
@@ -42,14 +54,14 @@ def manhattan(vector1: vector_type, vector2: vector_type) -> int | float:
     return abs(r1 - r2) + abs(c1 - c2)
 
 
-def shoelace(coordinates: Iterable[vector_type]) -> int | float:
+def shoelace(coordinates: AddableSequence[vector_type]) -> int | float:
     """The shoelace formula, also known as Gauss's area formula and the surveyor's formula, is a
     mathematical algorithm to determine the area of a simple polygon whose vertices are described by
     their Cartesian coordinates in the plane"""
     return abs(
         sum(
             np.linalg.det([[*p1], [*p2]])
-            for p1, p2 in zip(coordinates, coordinates[1:] + [coordinates[0]])
+            for p1, p2 in zip(coordinates, coordinates[1:] + coordinates[:1])
         )
         / 2
     )
